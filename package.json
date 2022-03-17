@@ -1,0 +1,14 @@
+{
+  "name": "first-node-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "nodemon app.msj"
+  },
+  "author": "https://bitbucket.org/tigredonorte",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
