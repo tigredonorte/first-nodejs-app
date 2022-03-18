@@ -1,0 +1,17 @@
+<%- include ("../../layouts/main") %>
+
+<main>
+  <form class="col-md-5 p-lg-5 mx-auto my-5" method="post" action="/users/create">
+    <div class="mb-3">
+      <label class="form-label" for="name">Name</label>
+      <input class="form-control" type="text" placeholder="Name" name="name" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="price">Email</label>
+      <input class="form-control" type="email" placeholder="Email" name="email" />
+    </div>
+    <button class="btn btn-primary start-50" type="submit">Create User</button>
+  </form>
+</main>
+
+<%- include ("../../layouts/footer") %>

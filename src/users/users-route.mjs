@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 
 const UsersRouter = express.Router();
 
-UsersRouter.post('/', async(req, res, next) => {   
+UsersRouter.post('/create', async(req, res) => {   
     const readed = await fs.readFile('user-list.json');
     const temp = JSON.parse(Buffer.concat([readed]).toString());
     temp.push(req.body);
@@ -14,17 +14,14 @@ UsersRouter.post('/', async(req, res, next) => {
     res.end();
 });
 
-UsersRouter.get('/create', async(req, res, next) => {
-    res.sendFile(path.resolve(path.join('.', 'src', 'users', 'views', 'users.form.html')));
+UsersRouter.get('/create', async(req, res) => {
+    res.render('users/views/users-form', { docTitle: 'Create user' });
 });
 
-UsersRouter.get('/', async(req, res, next) => {
+UsersRouter.get('/', async(req, res) => {
     const readed = await fs.readFile('user-list.json');
     const users = JSON.parse(Buffer.concat([readed]).toString());
-    res.write(`<html><head> <title>Users</title> </head><body><ul>`);
-    users.map(user => res.write(`<li><b>${user.username}</b>: ${user.email}</li>`));
-    res.write('</ul></body></html>');
-    res.end();
+    res.render('users/views/index', { users, docTitle: 'User List' });
 });
 
 export { UsersRouter };
