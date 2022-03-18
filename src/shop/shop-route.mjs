@@ -14,11 +14,11 @@ ShopRoutes.post('/add-product', (req, res) => {
 });
 
 ShopRoutes.get('/add-product', (req, res) => {
-    res.render('shop/views/add-product', { docTitle: 'Add Products', path: '/products/add-product' });
+    res.render('shop/views/add-product', { docTitle: 'Add Products', page: '/products/add-product' });
 });
 
 ShopRoutes.get('/', (req, res) => {
-    res.render('shop/views/index', { products, docTitle: 'My shop', path: '/products', hasProducts: products.length > 0 });
+    res.render('shop/views/index', { products, docTitle: 'My shop', page: '/products', hasProducts: products.length > 0 });
 });
 
 export { ShopRoutes, products };

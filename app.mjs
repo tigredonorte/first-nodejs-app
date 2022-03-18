@@ -6,7 +6,7 @@ import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
 import expressHbs from "express-handlebars";
 
-const engine = 'hbs'; // hbs | pug | egs
+const engine = 'ejs'; // hbs | pug | ejs
 
 const liveReloadServer = livereload.createServer();
 liveReloadServer.server.once("connection", () => {
