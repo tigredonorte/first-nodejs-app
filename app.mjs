@@ -4,9 +4,6 @@ import { ShopRoutes } from './src/shop/shop-route.mjs';
 import { UsersRouter } from './src/users/users-route.mjs';
 import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
-import expressHbs from "express-handlebars";
-
-const engine = 'ejs'; // hbs | pug | ejs
 
 const liveReloadServer = livereload.createServer();
 liveReloadServer.server.once("connection", () => {
@@ -16,17 +13,11 @@ liveReloadServer.server.once("connection", () => {
 });
 
 const app = express();
-switch (engine) {
-  case 'hbs':
-      app.engine(engine, expressHbs());
-    break;
-}
-app.set('view engine', engine);
+app.set('view engine', 'ejs');
 app.set('views', './src/');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(connectLiveReload());
-app.use(express.static('./public'));
 
 app.use('/users', UsersRouter);
 app.use('/products', ShopRoutes);
