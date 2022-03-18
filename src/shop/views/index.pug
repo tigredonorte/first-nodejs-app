@@ -1,0 +1,22 @@
+extends ../../layout/main.pug
+
+block content
+  main
+    if products.length > 0
+      .container.row
+        each product in products
+          .col-4(style="padding: 5px;")
+            article.card
+              img.card-img-top(src=product.image)
+              .card-body 
+                h2.card-subtitle.text-muted.mb-2 #{product.title}
+                h1.card-title R$ #{product.price}
+                p.card-tex #{product.description}
+                .mb-2
+                  button.btn.btn-primary.start-50 Add to cart
+    else
+      .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-light
+        .col-md-5.p-lg-5.mx-auto.my-5
+          h1.display-6.fw-normal We don't have products yet
+          p.lead.fw-normal Come back latter to our store. You will find amazing products soon
+          button.btn.btn-outline-secondary Coming soon

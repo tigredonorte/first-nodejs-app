@@ -1,19 +1,19 @@
 import express from 'express';
-import path from 'path';
 
 const ShopRoutes = express.Router();
 
-ShopRoutes.post('/', (req, res) => {
-    console.log(req.body);
-    res.redirect('/');
+const products = [];
+ShopRoutes.post('/add-product', (req, res) => {
+    products.push(req.body);
+    res.redirect('/products');
 });
 
 ShopRoutes.get('/add-product', (req, res) => {
-    res.sendFile(path.resolve('./src/shop/views/add-product.html'));
+    res.render('shop/views/add-product', { docTitle: 'Add Products', path: '/products/add-product' });
 });
 
 ShopRoutes.get('/', (req, res) => {
-    res.sendFile(path.resolve('./src/shop/views/index.html'));
+    res.render('shop/views/index', { products, docTitle: 'My shop', path: '/products' });
 });
 
-export { ShopRoutes };
+export { ShopRoutes, products };
